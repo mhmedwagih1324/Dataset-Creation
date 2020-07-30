@@ -5,7 +5,7 @@ trigger([colorCam depthCam]);
 imgColor = getdata(colorCam);
 imgDepth = getdata(depthCam);
 imgDepth = imgDepth(:, :, :);
-imgDepth = imgDepth/1000;
+imgDepth = imgDepth/1000.0;
 imgDepth = mean(imgDepth, 3);
 
 
