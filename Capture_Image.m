@@ -15,16 +15,25 @@ imgDepth = double(imgDepth)/1000;
 imgDepth = mean(imgDepth, 3);
 
 % removing all zeros from both sides of the image
+[x, y] = find(imgDepth == 0);
 [H, W] = size(imgDepth);
-for i = 1:H
-    for j = 1:W
+for i = 1:size(x)
+    for j = 1:size(y)
         % check if the pixel = 0 and is on the left border of the image
-        if(imgDepth(i, j) == 0 && j~= W)
-            imgDepth(i, j) = imgDepth(i, j+1);
-        end
+        if(imgDepth(x(i), y(j)) == 0 && y(j)~= W)
+            imgDepth(x(i), y(j)) = imgDepth(x(i), y(j)+1);
         % check if the pixel = 0 and is on the right border of the image
-        if(imgDepth(i, j) == 0 && j== W)
-            imgDepth(i, j) = imgDepth(i, j-1);
+        elseif(imgDepth(x(i), y(j)) == 0 && y(j)== W)
+            imgDepth(x(i), y(j)) = imgDepth(x(i), y(j)-1);
+        % check if the pixel = 0 and is on the top border of the image
+        elseif(imgDepth(x(i), y(j)) == 0 && x(i)~= H)
+            imgDepth(x(i), y(j)) = imgDepth(x(i)+1, y(j));
+        % check if the pixel = 0 and is on the bottom border of the image
+        elseif(imgDepth(x(i), y(j)) == 0 && x(i)== H)
+            imgDepth(x(i), y(j)) = imgDepth(x(i)-1, y(j));
+        % the pixel is in the middle of the matrix
+        elseif(imgDepth(x(i), y(j)) == 0)
+            imgDepth(x(i), y(j)) = sum(sum(imgDepth(x(i)-1:x(i)+1, y(i)-1:y(i)+1)))/8;
         end
     end
 end
