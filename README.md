@@ -24,23 +24,23 @@ implemented mat scripts.
 
 ## Method:
 ### 'Initialize_Kinect.m' algorithm
-1- Initialize 2 video input sources(colorCam, depthCam).
-2- set number of frames per trigger for each cam, this determines the 
+- Initialize 2 video input sources(colorCam, depthCam).
+- set number of frames per trigger for each cam, this determines the 
 of frames taken per one trigger.
-3- configure both sources to be manually triggered.
-4- set the TriggerRebeat property of each cam, this property determines the
+- configure both sources to be manually triggered.
+- set the TriggerRebeat property of each cam, this property determines the
 number of trigger requests that can be sent to each one before it 
 automatically stopped.
-5- start both cameras.
+- start both cameras.
 ### 'Capture_Image.m' algorithm
-6- trigger both cameras to take the specified number of frames for each one.
-7- save the taken frames to imgColor and imgDepth.
-8- for imgDepth-> reshape, divide by 1000(to get depth in meters), then 
+- trigger both cameras to take the specified number of frames for each one.
+- save the taken frames to imgColor and imgDepth.
+- for imgDepth-> reshape, divide by 1000(to get depth in meters), then 
 get the mean of the 50 frames.
 #### zeros are errors
-9- while testing the output of the kinect, we found that the right and left
+- while testing the output of the kinect, we found that the right and left
 border of each image depth is always 0, so we copied the values to their 
 right and left to be the values of the borders, and done the same for any 
 0 that is found on the top and bottom borders.
-10- for the zeros that may occur in the middle of the image, we average the
+- for the zeros that may occur in the middle of the image, we average the
 values of the neighbouring pixels.
