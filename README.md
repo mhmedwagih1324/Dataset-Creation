@@ -44,3 +44,10 @@ right and left to be the values of the borders, and done the same for any
 0 that is found on the top and bottom borders.
 - for the zeros that may occur in the middle of the image, we average the
 values of the neighbouring pixels.
+### 'add_image_to_dataset.m' algorithm
+- specify a password before adding an image to the dataset, and prompt the
+user for it and compare the input with the specified password.
+- load the image to be added and load the dataset.
+- reshape the image and depth and stack them onto the dataset.
+- save the updated dataset and tell the user to commit the change to the 
+the github repository.
