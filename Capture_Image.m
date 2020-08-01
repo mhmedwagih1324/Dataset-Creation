@@ -18,23 +18,21 @@ imgDepth = mean(imgDepth, 3);
 [x, y] = find(imgDepth == 0);
 [H, W] = size(imgDepth);
 for i = 1:size(x)
-    for j = 1:size(y)
-        % check if the pixel = 0 and is on the left border of the image
-        if(imgDepth(x(i), y(j)) == 0 && y(j)~= W)
-            imgDepth(x(i), y(j)) = imgDepth(x(i), y(j)+1);
-        % check if the pixel = 0 and is on the right border of the image
-        elseif(imgDepth(x(i), y(j)) == 0 && y(j)== W)
-            imgDepth(x(i), y(j)) = imgDepth(x(i), y(j)-1);
-        % check if the pixel = 0 and is on the top border of the image
-        elseif(imgDepth(x(i), y(j)) == 0 && x(i)~= H)
-            imgDepth(x(i), y(j)) = imgDepth(x(i)+1, y(j));
-        % check if the pixel = 0 and is on the bottom border of the image
-        elseif(imgDepth(x(i), y(j)) == 0 && x(i)== H)
-            imgDepth(x(i), y(j)) = imgDepth(x(i)-1, y(j));
-        % the pixel is in the middle of the matrix
-        elseif(imgDepth(x(i), y(j)) == 0)
-            imgDepth(x(i), y(j)) = sum(sum(imgDepth(x(i)-1:x(i)+1, y(i)-1:y(i)+1)))/8;
-        end
+    % check if the pixel = 0 and is on the left border of the image
+    if(imgDepth(x(i), y(i)) == 0 && y(i)~= W)
+        imgDepth(x(i), y(i)) = imgDepth(x(i), y(i)+1);
+    % check if the pixel = 0 and is on the right border of the image
+    elseif(imgDepth(x(i), y(i)) == 0 && y(i)== W)
+        imgDepth(x(i), y(i)) = imgDepth(x(i), y(i)-1);
+    % check if the pixel = 0 and is on the top border of the image
+    elseif(imgDepth(x(i), y(i)) == 0 && x(i)~= H)
+        imgDepth(x(i), y(i)) = imgDepth(x(i)+1, y(i));
+    % check if the pixel = 0 and is on the bottom border of the image
+    elseif(imgDepth(x(i), y(i)) == 0 && x(i)== H)
+        imgDepth(x(i), y(i)) = imgDepth(x(i)-1, y(i));
+    % the pixel is in the middle of the matrix
+    elseif(imgDepth(x(i), y(i)) == 0)
+        imgDepth(x(i), y(i)) = sum(sum(imgDepth(x(i)-1:x(i)+1, y(i)-1:y(i)+1)))/8;
     end
 end
 

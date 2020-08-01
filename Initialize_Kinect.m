@@ -14,8 +14,8 @@ depthCam.FramesPerTrigger = 50;
 triggerconfig([colorCam depthCam], 'manual')
 
 % set number of trigger repeats (default = 1), zero based number
-colorCam.TriggerRepeat = 20;
-depthCam.TriggerRepeat = 20;
+colorCam.TriggerRepeat = 200;
+depthCam.TriggerRepeat = 200;
 
 % preview([colorCam depthCam])
 % stoppreview([colorCam depthCam])
