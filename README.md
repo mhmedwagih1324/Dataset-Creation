@@ -13,12 +13,16 @@ through the depth sensor and removes zeros from both edges of the Image.
 - ### add_image_to_dataset:
 contains code that adds a captured image (through 'Capture_Image.m') that 
 is saved to 'test.mat' to dataset saved in 'dataset.mat'.
+- ### resize_dataset:
+contains code that is responsible for resizing images added in
+'part_of_dataset.mat' to be of size (Nx3x640x480) for color images and
+(Nx640x480) for depth images.
 
 ### test.mat:
-contains the first image taken using the above scripts, contains a 
-colorImage and a depthImage as matrices.
+contains the image taken using 'Capture_Image.m', divided as a colorImage 
+and a depthImage as matrices.
 
-### dataset.mat:
+### part_of_dataset.mat:
 contains images and depths taken from test.mat one by one through the 
 implemented mat scripts.
 
@@ -51,3 +55,12 @@ user for it and compare the input with the specified password.
 - reshape the image and depth and stack them onto the dataset.
 - save the updated dataset and tell the user to commit the change to the 
 the github repository.
+### 'resize_dataset.m'
+- load the new part of the dataset.
+- load the ready dataset that was created before.
+- loop on each image of the dataset and resize it and stack them onto the
+old ready dataset.
+- save the updated dataset in place of the old one.
+
+-- after this step the developer should reset the mat file named 
+'part_of_dataset.mat' for future uses and stop the camera.
