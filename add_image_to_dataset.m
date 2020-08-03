@@ -8,7 +8,7 @@ if(strcmp(pass,str))
     % load the captured image
     load('test.mat', 'imgColor', 'imgDepth');
     % load the dataset mat file
-    load('dataset1.mat', 'images', 'depths');
+    load('part_of_dataset.mat', 'images', 'depths');
     % reshape the image and depth
     imgColor = reshape(imgColor, [1, 1080, 1920, 3]);
     imgDepth = reshape(imgDepth, [1, 424, 512]);
@@ -16,6 +16,6 @@ if(strcmp(pass,str))
     images = [images;imgColor];
     depths = [depths;imgDepth];
     % save the data set
-    save('dataset1.mat', 'images', 'depths');
+    save('part_of_dataset.mat', 'images', 'depths');
     disp('please commit the repo!');
 end
