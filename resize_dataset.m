@@ -24,4 +24,6 @@ end
 % update the dataset with the new added images
 images = imgs;
 depths = dpts;
+images = permute(images, [4 3 2 1]);
+depths = permute(depths, [3 2 1]);
 save('ready_dataset.mat', 'images', 'depths');
