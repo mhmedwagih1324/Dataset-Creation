@@ -6,6 +6,8 @@ depths = s1.depths;
 s2 = load('ready_dataset.mat', 'images', 'depths');
 imgs = s2.images;
 dpts = s2.depths;
+imgs = permute(imgs, [4 3 2 1]);
+dpts = permute(dpts, [3 2 1]);
 % loop on each image of the new dataset
 for i = 2:size(images, 1)
     % do some operations on the image
