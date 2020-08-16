@@ -17,6 +17,9 @@ is saved to 'test.mat' to dataset saved in 'dataset.mat'.
 contains code that is responsible for resizing images added in
 'part_of_dataset.mat' to be of size (Nx3x640x480) for color images and
 (Nx640x480) for depth images.
+- ### augment_dataset:
+contains code that increases the size of a dataset through flipping up-down
+and right-left.
 
 ### test.mat:
 contains the image taken using 'Capture_Image.m', divided as a colorImage 
@@ -64,3 +67,17 @@ old ready dataset.
 
 -- after this step the developer should reset the mat file named 
 'part_of_dataset.mat' for future uses and stop the camera.
+### 'augment_dataset.m'
+- load the ready dataset
+- loop on each image of the new dataset
+- pick an image and its depth
+- apply flipping up-down, right-left and both
+- concatenate augmented images along with the original one
+- update the dataset with the new added images
+
+## Results
+The created dataset contains 600 RGBD images of foods mentioned in the txt
+file [taken images.txt](https://github.com/mhmedwagih1324/Dataset-Creation/blob/master/taken%20images.txt)
+and these 600 are actually 150 and augmented through flipping 3 times.  
+This [link](https://drive.google.com/file/d/1Y-OhhH8kGGJuWEqbk9RyBHEuazbclIcp/view?usp=sharing)
+contains the dataset and is 1.25GB.
